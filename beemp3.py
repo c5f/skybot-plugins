@@ -8,8 +8,8 @@ def get_mp3(inp):
     base_url = "http://beemp3.com/download.php"
 
     post_dict = {
-        q = inp,
-        st = "all"
+        "q" : inp,
+        "st" : "all"
     }
 
     songs = []
