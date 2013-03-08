@@ -1,26 +1,29 @@
-from util import hook, http
+import requests
+from lxml import etree
+from util import hook
 from urllib import urlencode
 
 def get_mp3(inp):
     """ search beemp3.com """
 
-    search_url = "http://beemp3.com/index.php"
-    base_url = "http://beemp3.com/download.php"
+    session = requests.Session()
 
-    post_dict = {
-        "q" : inp,
-        "st" : "all"
+    search_url = "http://beemp3.com/index.php"
+    params = {
+        "q": inp, 
+        "st": "all"
     }
+
+    html = etree.HTML(s.get(search_url, params=params).text)
 
     songs = []
     links = []
 
-    results = http.get_html(search_url, post_data=urlencode(post_dict))
-
     for i in range(0, 2):
-        pass
+        songs[i] = "test %d" % i
+        links[i] = "test %d" % i
 
-    return results
+    return html
 
 @hook.command('mp3')
 @hook.command
