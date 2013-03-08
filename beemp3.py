@@ -1,7 +1,6 @@
 import requests
 from lxml import etree
 from util import hook
-from urllib import urlencode
 
 def get_mp3(inp):
     """ search beemp3.com """
@@ -14,7 +13,7 @@ def get_mp3(inp):
         "st": "all"
     }
 
-    html = etree.HTML(s.get(search_url, params=params).text)
+    html = etree.HTML(session.get(search_url, params=params).text)
 
     songs = []
     links = []
