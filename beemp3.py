@@ -15,10 +15,10 @@ def get_mp3(inp):
     songs = []
     links = []
 
-    results = http.get_html(search_url, post_data=urlencode(post_data))
+    results = http.get_html(search_url, post_data=urlencode(post_dict))
 
     for i in range(0, 2):
-        
+        pass
 
     return results
 
