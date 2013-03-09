@@ -29,8 +29,8 @@ def how_long(inp):
         ).text
     )
 
-    gamebreakdown = gamelist.xpath("//div[@id='gamelist_list']/div[1]/a[@title"+
-        "='Full Game Page'/@href/text()")[0]
+    gamebreakdown = gamelist.xpath(
+        "//div[@id='gamelist_list']/div[1]/a[@title='Full Game Page'/@href/text()")[0]
 
     html = etree.HTML(
         session.get(
