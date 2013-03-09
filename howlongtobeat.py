@@ -15,7 +15,7 @@ def how_long(inp):
     gamebreakdown = "http://howlongtobeat.com/gamebreakdown.php"
 
     data = {
-        "query": inp
+        "queryString": inp
     }
 
     headers = {
