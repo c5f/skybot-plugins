@@ -12,13 +12,23 @@ def how_long(inp):
     session.get("http://howlongtobeat.com/")
 
     gamelist = "http://howlongtobeat.com/gamelist_main.php"
-    gamebreakdown = "http://howlongtobeat.com/gamebreakdown_main.php"
+    gamebreakdown = "http://howlongtobeat.com/gamebreakdown.php"
 
-    params = {
-        "s": inp
+    data = {
+        "query": inp
     }
 
-    html = session.get(gamelist, params=params).text
+    headers = {
+        "Content-Type": "application/x-www-form-urlencoded"
+    }
+ 
+    html = etree.HTML(session.post(baseurl, data=data, headers=headers).text)
+
+    gameid = 0
+
+    data = {
+        "gameid": gameid
+    }
 
     return html
 
