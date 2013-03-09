@@ -21,13 +21,11 @@ def how_long(inp):
         "Content-Type": "application/x-www-form-urlencoded"
     }
  
-    gamelist = etree.HTML(
-        session.post(
-            base_url + gamelist, 
-            data=data, 
-            headers=headers
-        ).text
-    )
+    gamelist = session.post(
+        base_url + gamelist, 
+        data=data, 
+        headers=headers
+    ).text
 
     gamebreakdown = gamelist.xpath(
         "//div[@id='gamelist_list']/div[1]/a[@title=['Full Game Page']/@href/text()")[0]
@@ -39,7 +37,7 @@ def how_long(inp):
         ).text
     )
 
-    return gamebreakdown
+    return gamelist
 
 @hook.command('hltb')
 @hook.command('howlong')
