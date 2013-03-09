@@ -9,10 +9,9 @@ def how_long(inp):
 
     session = requests.Session()
 
-    session.get("http://howlongtobeat.com/")
+    base_url = "http://howlongtobeat.com/"
 
-    gamelist = "http://howlongtobeat.com/gamelist_main.php"
-    gamebreakdown = "http://howlongtobeat.com/gamebreakdown.php"
+    gamelist = "gamelist_main.php"
 
     data = {
         "queryString": inp
@@ -22,15 +21,25 @@ def how_long(inp):
         "Content-Type": "application/x-www-form-urlencoded"
     }
  
-    html = session.post(gamelist, data=data, headers=headers).text
+    gamelist = etree.HTML(
+        session.post(
+            base_url + gamelist, 
+            data=data, 
+            headers=headers
+        ).text
+    )
 
-    gameid = 0
+    gamebreakdown = gamelist.xpath("//div[@id='gamelist_list']/div[1]/a[@title"+
+        "='Full Game Page'/@href/text()")[0]
 
-    data = {
-        "gameid": gameid
-    }
+    html = etree.HTML(
+        session.get(
+            base_url + gamebreakdown,
+            headers=headers
+        ).text
+    )
 
-    return html
+    return gamebreakdown
 
 @hook.command('hltb')
 @hook.command('howlong')
