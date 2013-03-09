@@ -22,7 +22,7 @@ def how_long(inp):
         "Content-Type": "application/x-www-form-urlencoded"
     }
  
-    html = etree.HTML(session.post(gamelist, data=data, headers=headers).text)
+    html = session.post(gamelist, data=data, headers=headers).text
 
     gameid = 0
 
