@@ -6,4 +6,4 @@ A collection of plugins for [skybot](http://github.com/rmmh/skybot/ "Skybot"), a
 Plugins:
 --------
 *   beemp3.py
-    *   _queries beemp3.com for the top three results of a song_
+    *   _queries beemp3.com for the top result of a song_
