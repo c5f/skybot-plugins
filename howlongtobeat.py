@@ -21,21 +21,23 @@ def how_long(inp):
         "Content-Type": "application/x-www-form-urlencoded"
     }
  
-    gamelist = session.post(
-        base_url + gamelist, 
-        data=data, 
-        headers=headers
-    ).text
+    gamelist = etree.HTML(
+        session.post(
+            base_url + gamelist, 
+            data=data, 
+            headers=headers
+        ).text
+    )
 
     gamebreakdown = gamelist.xpath(
         "//div[@id='gamelist_list']/div[1]/a[@title='Full Game Page']/@href/text()")[0]
 
-#    html = etree.HTML(
-#        session.get(
-#            base_url + gamebreakdown,
-#            headers=headers
-#        ).text
-#    )
+    html = etree.HTML(
+        session.get(
+           base_url + gamebreakdown,
+           headers=headers
+        ).text
+    )
 
     return gamelist
 
