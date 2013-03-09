@@ -26,19 +26,13 @@ def get_mp3(inp):
             "//ol/li[1]/div/div[@class='song-name']/a/font/strong/text()"):
                 title = title + part + " "
 
-        artist = html.xpath(
-            "//ol/li[1]/div[2]/a/text()")[0]
-
-        album = html.xpath(
-            "//ol/li[1]/div[2]/a/text()")[1]
-
         url =  base_url + html.xpath(
             "//ol/li[1]/div/div[@class='song-name']/a/@href")[0]
 
         url = session.get(
             "http://tinyurl.com/api-create.php?", params={"url": url}).text
 
-        return "%sby %s off of %s - %s" % (title, artist, album, url)
+        return "%s: %s" % (title, url)
 
     except IndexError:
         return "No results"
