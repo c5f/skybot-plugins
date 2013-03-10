@@ -29,8 +29,11 @@ def how_long(inp):
         ).text
     )
 
-    gamebreakdown = gamelist.xpath(
-        "//div[@id='gamelist_list']/div[1]/a[@title='Full Game Page']/@href")[0]
+    try:
+        gamebreakdown = gamelist.xpath(
+            "//div[@id='gamelist_list']/div[1]/a[@title='Full Game Page']/@href")[0]
+    except:
+        return "No results."
 
     html = etree.HTML(
        session.get(
@@ -49,21 +52,18 @@ def how_long(inp):
 
     table = html.xpath("//div[@class='gamepage_flow']/table")[0]
 
-    main_time = table.xpath("//tbody[2]/tr/td[4]/text()")[0]
-    extra_time = table.xpath("//tbody[3]/tr/td[4]/text()")[0]
-    complete_time = table.xpath("//tbody[4]/tr/td[4]/text()")[0]
-    overall = table.xpath("//tbody[5]/tr/td[4]/text()")[0]
+    main_time = table.xpath("//tbody[2]/tr/td[4]/text()")[0].strip()
+    extra_time = table.xpath("//tbody[3]/tr/td[4]/text()")[0].strip()
+    complete_time = table.xpath("//tbody[4]/tr/td[4]/text()")[0].strip()
+    overall = table.xpath("//tbody[5]/tr/td[4]/text()")[0].strip()
 
-    outp = "How long to beat %s (%s) (averages)\n" % (title, link)
-    outp += "Main Story: %s, Main + Extras: %s, Completionist: %s, Overall %s" % (
-        main_time, extra_time, complete_time, overall)
-
-    return outp
+    return "How long to beat %s (%s) (averages): Main Story: %s, Main + Extras: %s, Completionist: %s, Overall: %s" % (
+        title, link, main_time, extra_time, complete_time, overall)
 
 @hook.command('hltb')
 @hook.command('howlong')
 @hook.command
-def howlongtobeat(inp):
+def howlongtobeat(inp, say=None):
     return how_long(inp)
 
 if __name__ == "__main__":
