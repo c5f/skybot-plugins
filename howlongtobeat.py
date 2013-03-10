@@ -45,7 +45,7 @@ def how_long(inp):
     params = {"url": base_url + gamebreakdown}
 
     link = session.get(
-        "http://tinyurl.com/api-create.php?", params).text
+        "http://tinyurl.com/api-create.php?", params=params).text
 
     table = html.xpath("//div[@class='gamepage_flow']/table")[0]
 
