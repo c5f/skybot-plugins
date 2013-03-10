@@ -2,7 +2,7 @@ import requests
 from lxml import etree
 from util import hook
 
-def how_long(inp, nick):
+def how_long(inp):
     """ 
     returns a breakdown of the top result from a howlongtobeat.com search
     """
@@ -66,8 +66,7 @@ def how_long(inp, nick):
         if tbody.find(".//a") is not None:
             overall = "Overall: %s" % tbody.findall(".//td")[3].text.strip()
 
-    output = "%s: How long to beat %s (%s) (Averages) -" % (
-        nick, title, link)
+    output = "How long to beat %s (%s) (Averages) -" % (title, link)
 
     if not main_time == "":
         output += " %s," % main_time
@@ -86,7 +85,7 @@ def how_long(inp, nick):
 @hook.command('howlong')
 @hook.command
 def howlongtobeat(inp):
-    return how_long(inp, nick)
+    return how_long(inp)
 
 if __name__ == "__main__":
     print how_long("Bastion", "user")
