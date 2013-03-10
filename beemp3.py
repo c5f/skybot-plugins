@@ -1,4 +1,3 @@
-import json
 import requests
 from lxml import etree
 from util import hook
