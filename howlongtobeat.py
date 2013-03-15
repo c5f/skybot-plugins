@@ -85,6 +85,8 @@ def how_long(inp):
 @hook.command('howlong')
 @hook.command
 def howlongtobeat(inp):
+    ".howlongtobeat <game> -- gets the top result from howlongtobeat.com"
+
     return how_long(inp)
 
 if __name__ == "__main__":

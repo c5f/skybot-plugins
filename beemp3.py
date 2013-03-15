@@ -39,6 +39,10 @@ def get_mp3(inp):
 @hook.command('mp3')
 @hook.command
 def beemp3(inp):
+    ".beemp3 <song title> -- gets the top result from beemp3.com. However, "\
+    "the HTML rendering on that site is bananas, so the titles may display "\
+    "funky."
+
     return get_mp3(inp)
 
 if __name__ == "__main__":
