@@ -39,4 +39,4 @@ def litecoin(inp, say=None):
     )
 
 if __name__ == '__main__':
-    print litecoin("")
+    print getTickerData()
