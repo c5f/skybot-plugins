@@ -12,5 +12,5 @@ Plugins:
 --------
 *   beemp3.py
     *   _queries beemp3.com for the top result of a song_
-*   howlongtobeat.py
-    *   _queries howlongtobeat.com for the top result of a game_
+*   litecoin.py
+    *   _queries btc-e.com for the latest litecoin ticker data_

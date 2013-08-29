@@ -1,2 +1,2 @@
 # Required dependencies for various skybot plugins
-requests==0.14.2
+requests==1.2.3
