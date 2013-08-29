@@ -29,7 +29,9 @@ def litecoin(inp, say=None):
     "litecoin -- gets current exchange rate for litecoins from btc-e.com"
     ticker = getTickerData()
 
-    return 'Current: $%.2f - High: $%.2f - Low: $%.2f - Volume: %.2f LTC' % (
+    return 'Current: \x0312$%.2f\x0f - High: \x0312$%.2f\x0f - Low: ' \
+        '\x0312$%.2f\x0f - Volume: \x0312%.2f\x0f LTC' % (
+
         ticker.get('last', None),
         ticker.get('high', None),
         ticker.get('low', None),
