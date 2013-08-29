@@ -15,7 +15,12 @@ def getTickerData():
         session.get(url, headers={'Content-type': 'application/json'}).text
     )
 
-    return r['ticker']
+    tickerData = r.get('ticker', None)
+
+    if not tickerData:
+        return 'Error retrieving ticker data from bte.com/api/2/ltc_usd/ticker'
+
+    return tickerData
 
 
 @hook.command('ltc', autohelp=False)
