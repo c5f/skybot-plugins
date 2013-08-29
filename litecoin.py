@@ -7,7 +7,7 @@ from util import hook
 def getTickerData():
     """ get the latest litecoin information from btc-e.com """
 
-    url = 'https://btc-e.com/api/2/ltc_usd/ticker'
+    url = 'http://btc-e.com/api/2/ltc_usd/ticker'
 
     session = requests.Session()
 
